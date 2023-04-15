@@ -6,28 +6,47 @@
 
 int NumMassive = Readnum("Введите размер массива => ");
 
-int[] massive = FillArray();
-PrintArray(massive);
-delegate int input();
-input inp = new (Readnum);
+int[] massive = FillArray(NumMassive);
+Print(massive);
+
+System.Console.WriteLine($"=> {PositiveCount(massive, NumMassive)}");
+
+int PositiveCount(int[] massive, int NumMassive)
+{
+    int count = 0;
+    for (int i = 0; i < NumMassive; i++)
+    {
+        if (massive[i] > 0)
+        {
+            count++;
+        }
+    }
+    return count;
+}
+
 int Readnum(string massage)
 {
     System.Console.Write(massage);
     return Convert.ToInt32(System.Console.ReadLine());
 }
 
-
-int[] FillArray(int inp)
+int[] FillArray(int NumMassive)
 {
     int[] array = new int[NumMassive];
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = Readnum();
+        array[i] = Readnum($"Введите {i + 1} число => ");
     }
     return array;
+
+    int Readnum(string massage)
+    {
+        System.Console.Write(massage);
+        return Convert.ToInt32(System.Console.ReadLine());
+    }
 }
 
-void PrintArray(int[] FillArray)
+void Print(int[] FillArray)
 {
     for (int i = 0; i < massive.Length; i++)
     {
